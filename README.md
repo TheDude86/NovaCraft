@@ -1,0 +1,2 @@
+# NovaCraft
+Novacraft plugin development
