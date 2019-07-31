@@ -5,7 +5,6 @@ package io.novacraft.skinchanger;
  * Do not change or use this code without permission
  */
 
-import net.minecraft.server.v1_14_R1.EntityPlayer;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 

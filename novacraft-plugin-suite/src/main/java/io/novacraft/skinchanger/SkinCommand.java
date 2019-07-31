@@ -21,6 +21,11 @@ public class SkinCommand implements CommandExecutor {
 
     private Map<UUID, Long> commandCoolDowns = new HashMap<>();
     private static long commandCooldown = 3600000L;
+    private SkinChangerModel model;
+
+    public SkinCommand(SkinChangerModel model) {
+        this.model = model;
+    }
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String s, String[] args) {
@@ -39,7 +44,7 @@ public class SkinCommand implements CommandExecutor {
         Player player = (Player) sender;
         System.out.println(commandCoolDowns.getOrDefault(player.getUniqueId(), 0L) - System.currentTimeMillis());
         if ((commandCoolDowns.getOrDefault(player.getUniqueId(), 0L) <= System.currentTimeMillis()) || (player.hasPermission("skinchanger.admin")) || player.isOp()) {
-            GameProfile gameProfile = SkinManager.setupGameProfile(player, args[0]);
+            GameProfile gameProfile = SkinManager.setupGameProfile(player, args[0], model);
             SkinManager.setPlayerSkinToGameProfile(player, gameProfile);
             sender.sendMessage(ChatColor.GREEN + "You now have the skin of " + ChatColor.RED + args[0] + ChatColor.GREEN + "!");
             commandCoolDowns.put(player.getUniqueId(), System.currentTimeMillis() + commandCooldown);
