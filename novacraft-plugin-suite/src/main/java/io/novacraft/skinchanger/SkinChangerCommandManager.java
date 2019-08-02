@@ -3,8 +3,6 @@ package io.novacraft.skinchanger;
 import io.novacraft.core.CommandManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.Objects;
-
 public class SkinChangerCommandManager extends CommandManager<SkinChangerModel> {
 
     public SkinChangerCommandManager(SkinChangerModel skinChangerModel) {
@@ -12,7 +10,8 @@ public class SkinChangerCommandManager extends CommandManager<SkinChangerModel> 
     }
 
     @Override
-    public void initCommands(JavaPlugin plugin) {
-        Objects.requireNonNull(plugin.getCommand("skin")).setExecutor(new SkinCommand(this.model));
+    public void addCommands(JavaPlugin plugin) {
+        super.addCommands(plugin);
+        bindCommand("skin", new SkinCommand(this.model));
     }
 }

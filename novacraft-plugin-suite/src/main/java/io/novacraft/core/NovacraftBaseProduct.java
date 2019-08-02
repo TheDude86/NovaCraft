@@ -16,7 +16,7 @@ public abstract class NovacraftBaseProduct<MODEL> {
     abstract public void onCreate();
 
     void onStart(Config config) {
-        if (this.commandManager != null) this.commandManager.initCommands(this.plugin);
+        if (this.commandManager != null) this.commandManager.addCommands(this.plugin);
         if (this.eventManager != null) this.eventManager.initListeners(this.plugin);
         if (this.configMapper != null) model = this.configMapper.mapConfigData(config);
     }
