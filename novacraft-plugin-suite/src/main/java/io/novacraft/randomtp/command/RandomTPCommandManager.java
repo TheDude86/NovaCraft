@@ -14,6 +14,6 @@ public class RandomTPCommandManager extends CommandManager<RandomTPModel> {
 
     @Override
     public void initCommands(JavaPlugin plugin) {
-        Objects.requireNonNull(plugin.getCommand("rtp")).setExecutor(new WarpCommand());
+        Objects.requireNonNull(plugin.getCommand("rtp")).setExecutor(new WarpCommand(model));
     }
 }

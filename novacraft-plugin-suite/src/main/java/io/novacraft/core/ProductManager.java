@@ -11,14 +11,26 @@ public class ProductManager {
     ArrayList<NovacraftBaseProduct> products = new ArrayList<>();
 
     public ProductManager(JavaPlugin plugin) {
-        products.add(new RandomTPProduct(plugin).build());
-        products.add(new SkinChangerProduct(plugin).build());
-        products.add(new StaffChatProduct(plugin).build());
+        products.add(new RandomTPProduct(plugin));
+        products.add(new SkinChangerProduct(plugin));
+        products.add(new StaffChatProduct(plugin));
     }
 
-    public void initializeProducts(Config config) {
+    public void createProducts() {
         for (NovacraftBaseProduct product: products) {
-            product.initialize(config);
+            product.onCreate();
+        }
+    }
+
+    public void startProducts(Config config) {
+        for (NovacraftBaseProduct product: products) {
+            product.onStart(config);
+        }
+    }
+
+    public void reloadProducts(Config config) {
+        for (NovacraftBaseProduct product: products) {
+            product.onReload(config);
         }
     }
 }

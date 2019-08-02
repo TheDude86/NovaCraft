@@ -12,11 +12,9 @@ public class RandomTPProduct extends NovacraftBaseProduct<RandomTPModel> {
     }
 
     @Override
-    public NovacraftBaseProduct build() {
-        this.commandManager = new RandomTPCommandManager(this.model);
-        this.eventManager = new RandomTPEventManager(this.model);
-        this.configMapper = new RandomTPConfigMapper();
-
-        return this;
+    public void onCreate() {
+        setCommandManager(new RandomTPCommandManager(this.model));
+        setEventManager(new RandomTPEventManager(this.model));
+        setConfigMapper(new RandomTPConfigMapper());
     }
 }

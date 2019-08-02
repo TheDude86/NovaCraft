@@ -16,7 +16,7 @@ import java.util.Random;
 
 public class TPManager {
 
-    public static void teleportPlayer(Player p) {
+    public static void teleportPlayer(Player p, RandomTPModel model) {
         FileConfiguration config = Novacraft.getInstance().getConfig();
         int minX = config.getInt("x_min");
         int maxX = config.getInt("x_max");
@@ -27,7 +27,7 @@ public class TPManager {
         int z = r.nextInt(maxZ - minZ) + minZ;
         int y = 255;
         boolean foundY = false;
-        Location location = new Location(RandomTP.getTeleportWorld(), x, y, z);
+        Location location = new Location(model.survival_world, x, y, z);
         Objects.requireNonNull(location.getWorld()).loadChunk(location.getChunk());
         while (!foundY) {
             if (location.getBlock().getType() != Material.AIR) {
@@ -37,7 +37,7 @@ public class TPManager {
                 location.add(0, -1, 0);
             }
             if (location.getY() <= 0) {
-                teleportPlayer(p);
+                teleportPlayer(p, model);
                 return;
             }
         }

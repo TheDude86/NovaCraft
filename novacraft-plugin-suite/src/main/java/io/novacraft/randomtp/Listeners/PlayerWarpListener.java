@@ -22,7 +22,7 @@ public class PlayerWarpListener implements Listener {
     public void playerWarpCommandEvent(PlayerCommandPreprocessEvent e) {
         if (e.getMessage().toLowerCase().equals("/warp random")) {
             e.setCancelled(true);
-            TPManager.teleportPlayer(e.getPlayer());
+            TPManager.teleportPlayer(e.getPlayer(), model);
         } else if (e.getMessage().toLowerCase().equals("/rtpreload")) {
             e.setCancelled(true);
             model.portal_world = Bukkit.getWorld(Objects.requireNonNull(Novacraft.getInstance().getConfig().getString("portal_world")));

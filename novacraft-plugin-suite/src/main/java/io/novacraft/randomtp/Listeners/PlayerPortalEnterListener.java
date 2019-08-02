@@ -27,7 +27,7 @@ public class PlayerPortalEnterListener implements Listener {
         if (e.getTo().getBlock() == e.getFrom().getBlock()) return;
         if (e.getTo().getBlock().getType() == Material.NETHER_PORTAL || e.getTo().getBlock().getType() == Material.END_PORTAL) {
             if (p.getWorld().equals(model.portal_base.getWorld()) && p.getLocation().distance(model.portal_base) <= 5) {
-                TPManager.teleportPlayer(p);
+                TPManager.teleportPlayer(p, model);
             }
         }
     }
