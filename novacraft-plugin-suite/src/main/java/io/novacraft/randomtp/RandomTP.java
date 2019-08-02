@@ -6,7 +6,6 @@ package io.novacraft.randomtp;
  */
 
 import io.novacraft.Novacraft;
-import io.novacraft.randomtp.portals.PortalManager;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 
@@ -21,7 +20,6 @@ public class RandomTP {
 
         portalWorld = Bukkit.getWorld(Objects.requireNonNull(Novacraft.getInstance().getConfig().getString("portal_world")));
         teleportWorld = Bukkit.getWorld(Objects.requireNonNull(Novacraft.getInstance().getConfig().getString("survival_world")));
-        if (Novacraft.getInstance().getConfig().getBoolean("portal_enabled")) PortalManager.initiate();
     }
 
     public static World getPortalWorld() {
