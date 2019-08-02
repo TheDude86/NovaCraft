@@ -1,5 +1,6 @@
 package io.novacraft.core;
 
+import io.novacraft.bloodmoon.BloodMoonProduct;
 import io.novacraft.randomtp.RandomTPProduct;
 import io.novacraft.skinchanger.SkinChangerProduct;
 import io.novacraft.staffchat.StaffChatProduct;
@@ -14,6 +15,7 @@ public class ProductManager {
         products.add(new RandomTPProduct(plugin));
         products.add(new SkinChangerProduct(plugin));
         products.add(new StaffChatProduct(plugin));
+        products.add(new BloodMoonProduct(plugin));
     }
 
     public void createProducts() {
