@@ -1,3 +1,5 @@
+package io.novacraft.bloodmoon;
+
 public enum MoonPhase {
 	FULL_MOON,
 	WANING_GIBBOUS,
