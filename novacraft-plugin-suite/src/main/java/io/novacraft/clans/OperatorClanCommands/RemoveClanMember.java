@@ -1,6 +1,7 @@
 package io.novacraft.clans.OperatorClanCommands;
 
 import io.novacraft.clans.PlayerClanCommands.PlayerPermission;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
@@ -44,11 +45,10 @@ public class RemoveClanMember {
         memberList.remove(playerName);
         yamlConfiguration.set("clans." + clan + ".members", memberList.toArray());
         save();
-    }
-
-    private void getNewLeader(String newPlayer, String clan) {
-        yamlConfiguration.set("clans." + clan + ".leader", newPlayer);
-        yamlConfiguration.set("players." + newPlayer + ".Player_Permissions", PlayerPermission.LEADER.toString());
+        Object newLeader = memberList.toArray()[0];
+        yamlConfiguration.set("clans." + clan + ".leader", newLeader);
+        yamlConfiguration.set("players." + newLeader.toString() + ".clan", clan);
+        yamlConfiguration.set("players." + newLeader.toString() + ".Player_Permissions", PlayerPermission.LEADER.toString());
         save();
     }
 
