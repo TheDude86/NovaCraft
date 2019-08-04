@@ -13,3 +13,8 @@ commands:
     permission: staffchat.use
     permission-message: "§cYou don't have permission to execute this command!"
     description: What's this?
+  clans:
+    description: /clans [create, delete, invite, leave, accept, deny, list, addslots, info, kick, setprefix, setbanner, getbanner]
+  opclans:
+    permission: op
+    description: /opclans [setprefix, disband, removemember, changeleader, setmemberlimit]
