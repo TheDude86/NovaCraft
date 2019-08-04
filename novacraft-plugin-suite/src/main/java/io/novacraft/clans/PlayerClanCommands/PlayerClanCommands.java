@@ -1,4 +1,4 @@
-package me.harambe_hotsauce.clans.PlayerClanCommands;
+package io.novacraft.clans.PlayerClanCommands;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -14,17 +14,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static me.harambe_hotsauce.clans.PlayerClanCommands.GenerateFile.getFilePath;
+import static io.novacraft.clans.PlayerClanCommands.GenerateFile.getFilePath;
 
 public class PlayerClanCommands implements CommandExecutor, TabCompleter {
 
     private static final List<String> COMMANDS = Arrays.asList("create", "delete", "invite", "leave", "accept", "deny", "list", "addslots", "info", "kick", "setprefix", "setbanner", "getbanner");
     File file = new File(getFilePath());
     YamlConfiguration yamlConfiguration = YamlConfiguration.loadConfiguration(file);
-
-    public PlayerClanCommands(JavaPlugin plugin) {
-        plugin.getServer().broadcastMessage("info");
-    }
 
     @SuppressWarnings("typo")
     @Override

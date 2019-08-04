@@ -1,4 +1,4 @@
-package me.harambe_hotsauce.clans.PlayerClanCommands;
+package io.novacraft.clans.PlayerClanCommands;
 
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -7,7 +7,7 @@ import org.bukkit.entity.Player;
 import java.io.File;
 import java.io.IOException;
 
-import static me.harambe_hotsauce.clans.PlayerClanCommands.GenerateFile.getFilePath;
+import static io.novacraft.clans.PlayerClanCommands.GenerateFile.getFilePath;
 
 class SetClanBanner {
 
@@ -20,7 +20,7 @@ class SetClanBanner {
             if (getPermission(player.getName())) {
                 yamlConfiguration.set("clans." + clan + ".banner", new GetHeldBanner().getBanner(player));
                 save();
-                player.getInventory().getItemInMainHand().subtract();
+                player.getInventory().getItemInMainHand().setAmount(0);
             } else {
                 player.sendMessage(ChatColor.RED + "You are not the clan leader!");
             }

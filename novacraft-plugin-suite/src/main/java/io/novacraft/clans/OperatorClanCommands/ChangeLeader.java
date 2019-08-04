@@ -1,6 +1,6 @@
-package me.harambe_hotsauce.clans.OperatorClanCommands;
+package io.novacraft.clans.OperatorClanCommands;
 
-import me.harambe_hotsauce.clans.PlayerClanCommands.PlayerPermission;
+import io.novacraft.clans.PlayerClanCommands.PlayerPermission;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -10,7 +10,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import static me.harambe_hotsauce.clans.PlayerClanCommands.GenerateFile.getFilePath;
+import static io.novacraft.clans.PlayerClanCommands.GenerateFile.getFilePath;
 
 class ChangeLeader {
 

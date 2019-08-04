@@ -1,4 +1,4 @@
-package me.harambe_hotsauce.clans.PlayerClanCommands;
+package io.novacraft.clans.PlayerClanCommands;
 
 import org.bukkit.configuration.file.YamlConfiguration;
 
@@ -6,7 +6,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import static me.harambe_hotsauce.clans.PlayerClanCommands.GenerateFile.getFilePath;
+import static io.novacraft.clans.PlayerClanCommands.GenerateFile.getFilePath;
 
 public class RemoveFromClanList {
 

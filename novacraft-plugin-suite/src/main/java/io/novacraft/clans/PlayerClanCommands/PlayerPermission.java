@@ -1,4 +1,4 @@
-package me.harambe_hotsauce.clans.PlayerClanCommands;
+package io.novacraft.clans.PlayerClanCommands;
 
 public enum PlayerPermission {
     LEADER,

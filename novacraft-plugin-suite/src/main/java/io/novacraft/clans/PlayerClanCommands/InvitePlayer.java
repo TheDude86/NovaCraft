@@ -1,4 +1,4 @@
-package me.harambe_hotsauce.clans.PlayerClanCommands;
+package io.novacraft.clans.PlayerClanCommands;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import static me.harambe_hotsauce.clans.PlayerClanCommands.GenerateFile.getFilePath;
+import static io.novacraft.clans.PlayerClanCommands.GenerateFile.getFilePath;
 
 class InvitePlayer {
 

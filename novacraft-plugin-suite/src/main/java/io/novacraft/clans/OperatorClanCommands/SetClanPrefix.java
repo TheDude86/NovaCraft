@@ -1,4 +1,4 @@
-package me.harambe_hotsauce.clans.OperatorClanCommands;
+package io.novacraft.clans.OperatorClanCommands;
 
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -7,7 +7,7 @@ import org.bukkit.entity.Player;
 import java.io.File;
 import java.io.IOException;
 
-import static me.harambe_hotsauce.clans.PlayerClanCommands.GenerateFile.getFilePath;
+import static io.novacraft.clans.PlayerClanCommands.GenerateFile.getFilePath;
 
 public class SetClanPrefix {
 

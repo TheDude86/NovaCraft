@@ -1,5 +1,9 @@
 package io.novacraft.clans;
 
+import io.novacraft.clans.PlayerClanCommands.GenerateFile;
+import io.novacraft.core.NovacraftBaseProduct;
+import org.bukkit.plugin.java.JavaPlugin;
+
 public class ClanProduct extends NovacraftBaseProduct<ClanModel> {
 
     public ClanProduct(JavaPlugin plugin) {
@@ -9,7 +13,7 @@ public class ClanProduct extends NovacraftBaseProduct<ClanModel> {
     @Override
     public void onCreate() {
         new GenerateFile("Clans", "ClanList.yml");
-        setCommandmanager(new ClanCommandManager(this.model));
+        setCommandManager(new ClanCommandManager(this.model));
         setEventManager(new ClanEventManager(this.model));
     }
     

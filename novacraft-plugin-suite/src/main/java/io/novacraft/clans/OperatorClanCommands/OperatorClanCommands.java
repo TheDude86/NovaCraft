@@ -1,4 +1,4 @@
-package me.harambe_hotsauce.clans.OperatorClanCommands;
+package io.novacraft.clans.OperatorClanCommands;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
