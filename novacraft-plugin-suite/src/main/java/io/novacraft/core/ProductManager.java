@@ -12,7 +12,7 @@ public class ProductManager {
     ArrayList<NovacraftBaseProduct> products = new ArrayList<>();
 
     public ProductManager(JavaPlugin plugin) {
-        //products.add(new RandomTPProduct(plugin));
+        products.add(new RandomTPProduct(plugin));
         products.add(new SkinChangerProduct(plugin));
         products.add(new StaffChatProduct(plugin));
         products.add(new BloodMoonProduct(plugin));
