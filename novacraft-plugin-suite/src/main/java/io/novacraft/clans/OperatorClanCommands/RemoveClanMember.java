@@ -46,9 +46,15 @@ public class RemoveClanMember {
         save();
     }
 
+    private void getNewLeader(String newPlayer, String clan) {
+        yamlConfiguration.set("clans." + clan + ".leader", newPlayer);
+        yamlConfiguration.set("players." + newPlayer + ".Player_Permissions", PlayerPermission.LEADER.toString());
+        save();
+    }
+
     private void updatePlayer(String playerName) {
-        yamlConfiguration.set(".players" + playerName + ".Player_Permissions", PlayerPermission.NULL.toString());
-        yamlConfiguration.set(".players" + playerName + ".clan", null);
+        yamlConfiguration.set("players." + playerName + ".Player_Permissions", PlayerPermission.NULL.toString());
+        yamlConfiguration.set("players." + playerName + ".clan", null);
         save();
     }
 
