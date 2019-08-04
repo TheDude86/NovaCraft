@@ -14,6 +14,7 @@ public class ProductManager {
         products.add(new RandomTPProduct(plugin).build());
         products.add(new SkinChangerProduct(plugin).build());
         products.add(new StaffChatProduct(plugin).build());
+        products.add(new BloodMoonProduct(plugin).build());
     }
 
     public void initializeProducts(Config config) {
