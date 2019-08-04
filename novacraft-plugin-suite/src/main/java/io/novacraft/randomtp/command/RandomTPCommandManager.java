@@ -4,8 +4,6 @@ import io.novacraft.core.CommandManager;
 import io.novacraft.randomtp.RandomTPModel;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.Objects;
-
 public class RandomTPCommandManager extends CommandManager<RandomTPModel> {
 
     public RandomTPCommandManager(RandomTPModel randomTPModel) {
@@ -13,7 +11,8 @@ public class RandomTPCommandManager extends CommandManager<RandomTPModel> {
     }
 
     @Override
-    public void initCommands(JavaPlugin plugin) {
-        Objects.requireNonNull(plugin.getCommand("rtp")).setExecutor(new WarpCommand());
+    public void addCommands(JavaPlugin plugin) {
+        super.addCommands(plugin);
+        bindCommand("rtp", new WarpCommand(model));
     }
 }

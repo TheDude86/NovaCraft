@@ -9,9 +9,7 @@ public class StaffChatProduct extends NovacraftBaseProduct<StaffChatModel> {
     }
 
     @Override
-    public NovacraftBaseProduct build() {
-        this.commandManager = new StaffChatCommandManager(this.model);
-
-        return this;
+    public void onCreate() {
+        setCommandManager(new StaffChatCommandManager(this.model));
     }
 }

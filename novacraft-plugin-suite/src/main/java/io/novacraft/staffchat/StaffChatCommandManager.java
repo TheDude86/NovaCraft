@@ -3,10 +3,6 @@ package io.novacraft.staffchat;
 import io.novacraft.core.CommandManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.Objects;
-
-import static org.bukkit.Bukkit.getServer;
-
 public class StaffChatCommandManager extends CommandManager<StaffChatModel> {
 
     public StaffChatCommandManager(StaffChatModel staffChatModel) {
@@ -14,7 +10,8 @@ public class StaffChatCommandManager extends CommandManager<StaffChatModel> {
     }
 
     @Override
-    public void initCommands(JavaPlugin plugin) {
-        Objects.requireNonNull(getServer().getPluginCommand("sc")).setExecutor(new StaffChatCommand());
+    public void addCommands(JavaPlugin plugin) {
+        super.addCommands(plugin);
+        bindCommand("sc", new StaffChatCommand());
     }
 }
