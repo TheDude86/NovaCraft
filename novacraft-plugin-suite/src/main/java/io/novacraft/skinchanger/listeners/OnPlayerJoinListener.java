@@ -2,6 +2,7 @@ package io.novacraft.skinchanger.listeners;
 
 import com.mojang.authlib.GameProfile;
 import io.novacraft.Novacraft;
+import io.novacraft.core.logging.L;
 import io.novacraft.skinchanger.NMSManager;
 import io.novacraft.skinchanger.SkinChangerModel;
 import io.novacraft.skinchanger.SkinManager;

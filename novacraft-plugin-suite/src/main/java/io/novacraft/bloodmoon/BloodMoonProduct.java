@@ -10,6 +10,12 @@ public class BloodMoonProduct extends NovacraftBaseProduct<BloodMoonModel> {
 
     @Override
     public void onCreate() {
+        super.onCreate();
+        setCommandManager(new BloodMoonCommandManager(model));
+    }
 
+    @Override
+    public BloodMoonModel getInitialModel() {
+        return new BloodMoonModel();
     }
 }

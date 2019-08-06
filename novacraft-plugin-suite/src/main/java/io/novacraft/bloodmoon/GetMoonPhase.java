@@ -7,10 +7,6 @@ public class GetMoonPhase {
 		int days = (int) (w.getFullTime() / 24000);
 		int phase = days % 8;
 		
-		System.out.println("Full time: " + w.getFullTime());
-		
-		System.out.println("Days: "+ days + "\nPhase: "+ phase);
-		
 		switch(phase) {
 			case 0:
 				return MoonPhase.FULL_MOON;

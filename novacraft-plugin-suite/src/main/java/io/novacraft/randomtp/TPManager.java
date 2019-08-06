@@ -5,10 +5,8 @@ package io.novacraft.randomtp;
  * Do not change or use this code without permission
  */
 
-import io.novacraft.Novacraft;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
 import java.util.Objects;
@@ -17,14 +15,9 @@ import java.util.Random;
 public class TPManager {
 
     public static void teleportPlayer(Player p, RandomTPModel model) {
-        FileConfiguration config = Novacraft.getInstance().getConfig();
-        int minX = config.getInt("x_min");
-        int maxX = config.getInt("x_max");
-        int minZ = config.getInt("z_min");
-        int maxZ = config.getInt("z_max");
         Random r = new Random();
-        int x = r.nextInt(maxX - minX) + minX;
-        int z = r.nextInt(maxZ - minZ) + minZ;
+        int x = r.nextInt(model.xMax - model.xMin) + model.xMin;
+        int z = r.nextInt(model.zMax - model.zMin) + model.zMin;
         int y = 255;
         boolean foundY = false;
         Location location = new Location(model.survival_world, x, y, z);

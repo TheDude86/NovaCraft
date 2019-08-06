@@ -8,5 +8,5 @@ import java.util.Map;
 
 public class SkinChangerModel {
     public Map<Player, GameProfile> playerGameProfiles = new HashMap<>();
-
+    public boolean test = false;
 }

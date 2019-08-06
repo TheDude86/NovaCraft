@@ -10,6 +10,12 @@ public class StaffChatProduct extends NovacraftBaseProduct<StaffChatModel> {
 
     @Override
     public void onCreate() {
+        super.onCreate();
         setCommandManager(new StaffChatCommandManager(this.model));
+    }
+
+    @Override
+    public StaffChatModel getInitialModel() {
+        return new StaffChatModel();
     }
 }

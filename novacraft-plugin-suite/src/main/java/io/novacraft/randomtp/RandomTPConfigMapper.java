@@ -10,14 +10,20 @@ import org.bukkit.World;
 public class RandomTPConfigMapper implements ConfigMapper<RandomTPModel> {
 
     @Override
-    public RandomTPModel mapConfigData(Config model) {
-        RandomTPModel randomTPModel = new RandomTPModel();
-        randomTPModel.portal_enabled = model.portal_enabled;
-        randomTPModel.portal_location = model.portal_location;
-        randomTPModel.portal_world = Bukkit.getWorld(model.portal_world);
-        randomTPModel.survival_world = Bukkit.getWorld(model.survival_world);
+    public void mapConfigData(RandomTPModel productModel, Config model) {
+        productModel.portal_enabled = model.portal_enabled;
+        productModel.portal_location = model.portal_location;
+        productModel.xMax = model.x_max;
+        productModel.xMin = model.x_min;
+        productModel.zMax = model.z_max;
+        productModel.zMin = model.z_min;
 
-        if (randomTPModel.portal_enabled) {
+        String portalWorld = model.portal_world == null ? "world" : model.portal_world;
+        String survivalWorld = model.survival_world == null ? "world" : model.survival_world;
+        productModel.portal_world = Bukkit.getWorld(portalWorld);
+        productModel.survival_world = Bukkit.getWorld(survivalWorld);
+
+        if (productModel.portal_enabled) {
             String[] coords = Novacraft.getInstance().getConfig().getString("portal_location").split(",");
             double x, y, z;
             if (coords.length == 3) {
@@ -25,21 +31,16 @@ public class RandomTPConfigMapper implements ConfigMapper<RandomTPModel> {
                 y = Double.parseDouble(coords[1].split(":")[1]);
                 z = Double.parseDouble(coords[2].split(":")[1]);
 
-                World world = randomTPModel.portal_world;
+                World world = productModel.portal_world;
                 if (world == null) {
                     System.out.println("[RandomTP] The portal world is invalid! The portal won't work.");
-                    return randomTPModel;
+                    return;
                 }
-                randomTPModel.portal_base = new Location(world, x, y, z);
+                productModel.portal_base = new Location(world, x, y, z);
 
             } else {
                 System.out.println("[RandomTP] The portal location is invalid! The portal won't work.");
-                return randomTPModel;
             }
-
         }
-
-
-        return randomTPModel;
     }
 }

@@ -9,4 +9,8 @@ public class RandomTPModel {
     public World portal_world;
     public World survival_world;
     public Location portal_base;
+    public int xMin;
+    public int xMax;
+    public int zMin;
+    public int zMax;
 }

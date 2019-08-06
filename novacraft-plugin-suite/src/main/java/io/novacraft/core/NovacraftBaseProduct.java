@@ -13,16 +13,20 @@ public abstract class NovacraftBaseProduct<MODEL> {
         this.plugin = plugin;
     }
 
-    abstract public void onCreate();
+    public void onCreate() {
+        model = getInitialModel();
+    }
+
+    abstract public MODEL getInitialModel();
 
     void onStart(Config config) {
+        if (this.configMapper != null) this.configMapper.mapConfigData(model, config);
         if (this.commandManager != null) this.commandManager.addCommands(this.plugin);
         if (this.eventManager != null) this.eventManager.initListeners(this.plugin);
-        if (this.configMapper != null) model = this.configMapper.mapConfigData(config);
     }
 
     void onReload(Config config) {
-        if (this.configMapper != null) model = this.configMapper.mapConfigData(config);
+        if (this.configMapper != null) this.configMapper.mapConfigData(model, config);
     }
 
     protected void setCommandManager(CommandManager<MODEL> commandManager) {

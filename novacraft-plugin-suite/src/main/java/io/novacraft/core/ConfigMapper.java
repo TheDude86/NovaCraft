@@ -1,5 +1,6 @@
 package io.novacraft.core;
 
 public interface ConfigMapper<T> {
-    T mapConfigData(Config model);
+    //TODO: Add Callbacks for success and failures to map data
+    void mapConfigData(T productModel, Config model);
 }

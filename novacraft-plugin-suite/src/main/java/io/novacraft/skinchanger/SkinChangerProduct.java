@@ -11,8 +11,14 @@ public class SkinChangerProduct extends NovacraftBaseProduct<SkinChangerModel> {
 
     @Override
     public void onCreate() {
+        super.onCreate();
         setCommandManager(new SkinChangerCommandManager(this.model));
         setEventManager(new SkinChangerEventManager(this.model));
         setConfigMapper(new SkinChangerConfigMapper());
+    }
+
+    @Override
+    public SkinChangerModel getInitialModel() {
+        return new SkinChangerModel();
     }
 }

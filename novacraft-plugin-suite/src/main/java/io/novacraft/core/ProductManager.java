@@ -1,6 +1,7 @@
 package io.novacraft.core;
 
 import io.novacraft.bloodmoon.BloodMoonProduct;
+import io.novacraft.core.logging.L;
 import io.novacraft.randomtp.RandomTPProduct;
 import io.novacraft.skinchanger.SkinChangerProduct;
 import io.novacraft.staffchat.StaffChatProduct;
@@ -19,12 +20,16 @@ public class ProductManager {
     }
 
     public void createProducts() {
+        L.v("Running onCreate for all products");
+
         for (NovacraftBaseProduct product: products) {
             product.onCreate();
         }
     }
 
     public void startProducts(Config config) {
+        L.v("Running onStart for all products");
+
         for (NovacraftBaseProduct product: products) {
             product.onStart(config);
         }

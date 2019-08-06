@@ -13,3 +13,5 @@ commands:
     permission: staffchat.use
     permission-message: "§cYou don't have permission to execute this command!"
     description: What's this?
+  getmoonphase:
+    description: Get's the current moon phase.

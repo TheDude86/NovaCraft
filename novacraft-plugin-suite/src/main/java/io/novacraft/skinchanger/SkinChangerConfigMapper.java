@@ -5,9 +5,7 @@ import io.novacraft.core.ConfigMapper;
 
 public class SkinChangerConfigMapper implements ConfigMapper<SkinChangerModel> {
     @Override
-    public SkinChangerModel mapConfigData(Config model) {
-        SkinChangerModel skinModel = new SkinChangerModel();
-
-        return skinModel;
+    public void mapConfigData(SkinChangerModel productModel, Config model) {
+        productModel.test = true;
     }
 }
