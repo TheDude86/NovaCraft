@@ -13,12 +13,16 @@ class SetPrefix {
 
     File file = new File(getFilePath());
     YamlConfiguration yamlConfiguration = YamlConfiguration.loadConfiguration(file);
+    ChatColor color1;
+    ChatColor color2;
 
-    SetPrefix(Player player, String prefix) {
+    SetPrefix(Player player, String prefix, String color1, String color2) {
         if (checkIfClanExists(getClan(player))) {
             if (getPermission(player)) {
                 if (prefix.length() <= 5) {
                     yamlConfiguration.set("clans." + getClan(player) + ".prefix", prefix);
+                    yamlConfiguration.set("clans." + getClan(player) + ".prefixcolor1", color1);
+                    yamlConfiguration.set("clans." + getClan(player) + ".prefixcolor2", color2);
                     save();
                 } else {
                     player.sendMessage(ChatColor.RED + "Prefixes can be a max of 5 characters!");
