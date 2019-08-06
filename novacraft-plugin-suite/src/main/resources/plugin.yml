@@ -13,3 +13,8 @@ commands:
     permission: staffchat.use
     permission-message: "§cYou don't have permission to execute this command!"
     description: What's this?
+  clans:
+    description: Base command for all clan needs :)
+  opclans:
+    permission: op
+    description: Commands for you admins you

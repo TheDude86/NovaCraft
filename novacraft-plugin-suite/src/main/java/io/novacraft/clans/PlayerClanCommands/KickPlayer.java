@@ -1,0 +1,75 @@
+package io.novacraft.clans.PlayerClanCommands;
+
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.Player;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+
+import static io.novacraft.clans.PlayerClanCommands.GenerateFile.getFilePath;
+
+class KickPlayer {
+
+    File file = new File(getFilePath());
+    YamlConfiguration yamlConfiguration = YamlConfiguration.loadConfiguration(file);
+
+    KickPlayer(Player player, String kickedPlayer) {
+        if (checkIfClanExists(getClan(player))) {
+            if (getPermission(player)) {
+                if (checkIfPlayerInClan(getClan(player), kickedPlayer)) {
+                    if (player.getName().equals(kickedPlayer)) {
+                        player.sendMessage(ChatColor.DARK_RED + "You cannot kick yourself!");
+                    } else {
+                        ArrayList<String> memberList = (ArrayList<String>) yamlConfiguration.get("clans." + getClan(player) + ".members");
+                        memberList.remove(kickedPlayer);
+                        yamlConfiguration.set("clans." + getClan(player) + ".members", memberList.toArray());
+                        yamlConfiguration.set("players." + kickedPlayer + ".Player_Permissions", PlayerPermission.NULL.toString());
+                        yamlConfiguration.set("players." + kickedPlayer + ".clan", null);
+                        save();
+                        player.sendMessage(ChatColor.AQUA + kickedPlayer + ChatColor.RED + " has been kicked from your clan!");
+                        try {
+                            Player kPlayer = Bukkit.getPlayer(kickedPlayer);
+                            kPlayer.sendMessage(ChatColor.DARK_RED + "You have been kicked from " + ChatColor.AQUA + getClan(player));
+                        } catch (NullPointerException e) {
+                            System.out.println("Attempted to message " + kickedPlayer + " but they weren't logged in.");
+                        }
+                    }
+                } else {
+                    player.sendMessage(ChatColor.DARK_RED + "Player is not in your clan!");
+                }
+            } else {
+                player.sendMessage(ChatColor.DARK_RED + "You do not have permission to kick people from your clan!");
+            }
+        } else {
+            player.sendMessage(ChatColor.DARK_RED + "You are not in a clan!");
+        }
+    }
+
+    private boolean checkIfPlayerInClan(String clan, String player) {
+        ArrayList<String> memberList = (ArrayList<String>) yamlConfiguration.getStringList("clans." + clan + ".members");
+        return memberList.contains(player);
+    }
+
+    private String getClan(Player player) {
+        return (String) yamlConfiguration.get("players." + player.getName() + ".clan");
+    }
+
+    public boolean checkIfClanExists(String clan) {
+        return yamlConfiguration.get("clans." + clan) != null;
+    }
+
+    private boolean getPermission(Player player) {
+        return yamlConfiguration.get("players." + player.getName() + ".Player_Permissions").equals("LEADER");
+    }
+
+    private void save() {
+        try {
+            yamlConfiguration.save(file);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}

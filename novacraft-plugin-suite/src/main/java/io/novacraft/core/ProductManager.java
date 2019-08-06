@@ -1,5 +1,6 @@
 package io.novacraft.core;
 
+import io.novacraft.clans.ClanProduct;
 import io.novacraft.randomtp.RandomTPProduct;
 import io.novacraft.skinchanger.SkinChangerProduct;
 import io.novacraft.staffchat.StaffChatProduct;
@@ -13,6 +14,7 @@ public class ProductManager {
     public ProductManager(JavaPlugin plugin) {
         products.add(new RandomTPProduct(plugin));
         products.add(new SkinChangerProduct(plugin));
+        products.add(new ClanProduct(plugin));
         products.add(new StaffChatProduct(plugin));
     }
 
