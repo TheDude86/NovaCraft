@@ -1,3 +1,5 @@
+package io.novacraft.bloodmoon;
+
 import org.bukkit.World;
 
 public class GetMoonPhase {

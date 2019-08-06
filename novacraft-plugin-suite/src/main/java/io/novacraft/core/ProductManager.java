@@ -1,9 +1,9 @@
 package io.novacraft.core;
 
 import io.novacraft.clans.ClanProduct;
-//import io.novacraft.randomtp.RandomTPProduct;
+import io.novacraft.randomtp.RandomTPProduct;
 import io.novacraft.skinchanger.SkinChangerProduct;
-//import io.novacraft.staffchat.StaffChatProduct;
+import io.novacraft.staffchat.StaffChatProduct;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.ArrayList;
@@ -12,10 +12,10 @@ public class ProductManager {
     ArrayList<NovacraftBaseProduct> products = new ArrayList<>();
 
     public ProductManager(JavaPlugin plugin) {
-//        products.add(new RandomTPProduct(plugin));
+        products.add(new RandomTPProduct(plugin));
         products.add(new SkinChangerProduct(plugin));
         products.add(new ClanProduct(plugin));
-//        products.add(new StaffChatProduct(plugin));
+        products.add(new StaffChatProduct(plugin));
     }
 
     public void createProducts() {
