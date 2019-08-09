@@ -13,3 +13,7 @@ commands:
     permission: staffchat.use
     permission-message: "§cYou don't have permission to execute this command!"
     description: What's this?
+  dungeons:
+    description: join epic dungoeons for cool prizes :)
+  opdungeons:
+    description: command for configuring plugin

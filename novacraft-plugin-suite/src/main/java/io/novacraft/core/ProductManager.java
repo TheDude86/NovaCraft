@@ -1,5 +1,6 @@
 package io.novacraft.core;
 
+import io.novacraft.dungeons.DungeonProduct;
 import io.novacraft.randomtp.RandomTPProduct;
 import io.novacraft.skinchanger.SkinChangerProduct;
 import io.novacraft.staffchat.StaffChatProduct;
@@ -11,9 +12,10 @@ public class ProductManager {
     ArrayList<NovacraftBaseProduct> products = new ArrayList<>();
 
     public ProductManager(JavaPlugin plugin) {
-        products.add(new RandomTPProduct(plugin));
-        products.add(new SkinChangerProduct(plugin));
-        products.add(new StaffChatProduct(plugin));
+//        products.add(new RandomTPProduct(plugin));
+//        products.add(new SkinChangerProduct(plugin));
+//        products.add(new StaffChatProduct(plugin));
+        products.add(new DungeonProduct(plugin));
     }
 
     public void createProducts() {
