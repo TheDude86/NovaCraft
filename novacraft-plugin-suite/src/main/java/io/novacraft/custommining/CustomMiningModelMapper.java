@@ -1,4 +1,11 @@
 package io.novacraft.custommining;
 
-public class CustomMiningModelMapper {
+import io.novacraft.core.Config;
+import io.novacraft.core.ConfigMapper;
+
+public class CustomMiningModelMapper implements ConfigMapper<CustomMiningModel> {
+    @Override
+    public void mapConfigData(CustomMiningModel productModel, Config model) {
+        productModel.hardcoreEnabled = model.hardcore_enabled;
+    }
 }

@@ -11,6 +11,7 @@ public class InitialConfigParser {
         configModel.x_min = config.getInt("x_min");
         configModel.z_max = config.getInt("z_max");
         configModel.z_min = config.getInt("z_min");
+        configModel.hardcore_enabled = config.getBoolean("harcore_enabled");
 
         return configModel;
     }

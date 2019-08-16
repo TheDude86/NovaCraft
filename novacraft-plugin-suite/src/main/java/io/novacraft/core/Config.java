@@ -9,4 +9,5 @@ public class Config {
     public int x_max;
     public int z_min;
     public int z_max;
+    public boolean hardcore_enabled;
 }

@@ -8,3 +8,5 @@ x_min: -1000
 x_max: 1000
 z_min: -1000
 z_max: 1000
+
+harcore_enabled: false
