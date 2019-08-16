@@ -3,7 +3,6 @@ package io.novacraft.skinchanger.listeners;
 import com.mojang.authlib.GameProfile;
 import io.novacraft.skinchanger.NMSManager;
 import io.novacraft.skinchanger.SkinChangerModel;
-import io.novacraft.skinchanger.SkinManager;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
