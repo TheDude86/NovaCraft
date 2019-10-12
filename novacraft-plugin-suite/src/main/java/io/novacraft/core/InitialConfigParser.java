@@ -11,7 +11,8 @@ public class InitialConfigParser {
         configModel.x_min = config.getInt("x_min");
         configModel.z_max = config.getInt("z_max");
         configModel.z_min = config.getInt("z_min");
-
+        configModel.portal_world = config.getString("portal_world");
+        configModel.survival_world = config.getString("survival_world");
         return configModel;
     }
 }

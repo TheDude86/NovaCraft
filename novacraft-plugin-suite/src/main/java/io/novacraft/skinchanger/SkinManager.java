@@ -103,6 +103,7 @@ public class SkinManager {
     }
 
     public static boolean shouldUpdatePlayer(Player p, SkinChangerModel model) {
+        if (model.playerGameProfiles.size() == 0) return false;
         for (Map.Entry<Player, GameProfile> disguise : model.playerGameProfiles.entrySet()) {
             if (disguise.getKey().getWorld() == p.getWorld()) {
                 if (disguise.getKey().getLocation().distance(p.getLocation()) < 250) {

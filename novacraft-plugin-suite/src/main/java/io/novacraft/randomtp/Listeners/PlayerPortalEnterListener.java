@@ -22,7 +22,7 @@ public class PlayerPortalEnterListener implements Listener {
 
     @EventHandler
     public void playerPortalEnter(PlayerMoveEvent e) {
-        if (model.portal_base == null || e.getTo() == null) return;
+        if (!model.portal_enabled || model.portal_base == null || e.getTo() == null) return;
         Player p = e.getPlayer();
         if (e.getTo().getBlock() == e.getFrom().getBlock()) return;
         if (e.getTo().getBlock().getType() == Material.NETHER_PORTAL || e.getTo().getBlock().getType() == Material.END_PORTAL) {

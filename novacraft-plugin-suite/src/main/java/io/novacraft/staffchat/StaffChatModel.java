@@ -1,5 +1,13 @@
 package io.novacraft.staffchat;
 
+import org.bukkit.entity.Player;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
+
 public class StaffChatModel {
-    //No data needed at the moment for staff chat.
+
+    public Map<UUID, Player> lastMessaged = new HashMap<>();
+
 }

@@ -9,9 +9,13 @@ commands:
     description: Changes your skin to whatever you set.
   rtp:
     description: Random teleportation! :)
-  sc:
-    permission: staffchat.use
-    permission-message: "§cYou don't have permission to execute this command!"
-    description: What's this?
+  a:
+    description: Contact staff with this command.
+  ma:
+    description: Contact staff with this command.
+  ra:
+    description: Contact staff with this command.
   getmoonphase:
     description: Get's the current moon phase.
+  trophy:
+    description: Trophy Management command.

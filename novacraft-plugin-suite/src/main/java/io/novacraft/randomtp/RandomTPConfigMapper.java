@@ -9,6 +9,7 @@ import org.bukkit.World;
 
 public class RandomTPConfigMapper implements ConfigMapper<RandomTPModel> {
 
+
     @Override
     public void mapConfigData(RandomTPModel productModel, Config model) {
         productModel.portal_enabled = model.portal_enabled;

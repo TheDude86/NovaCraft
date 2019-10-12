@@ -1,6 +1,7 @@
 package io.novacraft.core;
 
 public class Config {
+    //RandomTP
     public boolean portal_enabled;
     public String portal_location;
     public String portal_world;

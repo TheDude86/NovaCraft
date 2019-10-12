@@ -29,10 +29,10 @@ public class OnPlayerJoinListener implements Listener {
     @EventHandler
     public void skinUpdateOnJoin(PlayerJoinEvent e) {
         Player p = e.getPlayer();
-        model.playerGameProfiles.remove(p);
         new BukkitRunnable() {
             @Override
             public void run() {
+                if (model.playerGameProfiles.size() == 0) return;
                 for (Map.Entry<Player, GameProfile> disguise : model.playerGameProfiles.entrySet()) {
                     try {
                         //Craft World and Server

@@ -14,7 +14,6 @@ public class RandomTPEventManager extends EventManager<RandomTPModel> {
 
     @Override
     public void initListeners(JavaPlugin plugin) {
-        getServer().getPluginManager().registerEvents(new PlayerWarpListener(this.model), plugin);
         getServer().getPluginManager().registerEvents(new PlayerPortalEnterListener(this.model), plugin);
     }
 }
