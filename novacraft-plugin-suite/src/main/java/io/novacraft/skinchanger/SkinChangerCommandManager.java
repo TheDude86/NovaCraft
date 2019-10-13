@@ -13,5 +13,6 @@ public class SkinChangerCommandManager extends CommandManager<SkinChangerModel> 
     public void addCommands(JavaPlugin plugin) {
         super.addCommands(plugin);
         bindCommand("skin", new SkinCommand(this.model));
+        bindCommand("resetcooldown", new CooldownResetCommand(this.model));
     }
 }

@@ -7,6 +7,7 @@ package io.novacraft.skinchanger;
 
 import com.mojang.authlib.GameProfile;
 import io.novacraft.util.TimeUtil;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -19,8 +20,6 @@ import java.util.UUID;
 
 public class SkinCommand implements CommandExecutor {
 
-    private Map<UUID, Long> commandCoolDowns = new HashMap<>();
-    private static long commandCooldown = 3600000L;
     private SkinChangerModel model;
 
     public SkinCommand(SkinChangerModel model) {
@@ -42,14 +41,30 @@ public class SkinCommand implements CommandExecutor {
             return false;
         }
         Player player = (Player) sender;
-        System.out.println(commandCoolDowns.getOrDefault(player.getUniqueId(), 0L) - System.currentTimeMillis());
-        if ((commandCoolDowns.getOrDefault(player.getUniqueId(), 0L) <= System.currentTimeMillis()) || (player.hasPermission("skinchanger.admin")) || player.isOp()) {
-            GameProfile gameProfile = SkinManager.setupGameProfile(player, args[0], model);
-            SkinManager.setPlayerSkinToGameProfile(player, gameProfile);
-            sender.sendMessage(ChatColor.GREEN + "You now have the skin of " + ChatColor.RED + args[0] + ChatColor.GREEN + "!");
-            commandCoolDowns.put(player.getUniqueId(), System.currentTimeMillis() + commandCooldown);
+        if (args.length == 1) {
+            if ((model.commandCoolDowns.getOrDefault(player.getUniqueId(), 0L) <= System.currentTimeMillis()) || (player.hasPermission("skinchanger.admin")) || player.isOp()) {
+                GameProfile gameProfile = SkinManager.setupGameProfile(player, args[0], model);
+                SkinManager.setPlayerSkinToGameProfile(player, gameProfile);
+                sender.sendMessage(ChatColor.GREEN + "You now have the skin of " + ChatColor.RED + args[0] + ChatColor.GREEN + "!");
+                model.commandCoolDowns.put(player.getUniqueId(), System.currentTimeMillis() + model.commandCooldown);
+            } else {
+                sender.sendMessage(ChatColor.RED + "You cannot change your skin for another " + ChatColor.DARK_RED + TimeUtil.convertmstoTime(model.commandCoolDowns.get(player.getUniqueId()) - System.currentTimeMillis()));
+            }
         } else {
-            sender.sendMessage(ChatColor.RED + "You cannot change your skin for another " + ChatColor.DARK_RED + TimeUtil.convertmstoTime(commandCoolDowns.get(player.getUniqueId()) - System.currentTimeMillis()));
+            if ((player.hasPermission("skinchanger.admin")) || player.isOp()) {
+                Player target = Bukkit.getPlayer(args[1]);
+                if (target == null) {
+                    player.sendMessage(ChatColor.RED + "That player isn't online or doesn't exist.");
+                    return false;
+                }
+                GameProfile gameProfile = SkinManager.setupGameProfile(target, args[0], model);
+                SkinManager.setPlayerSkinToGameProfile(target, gameProfile);
+                target.sendMessage(ChatColor.GREEN + "You now have the skin of " + ChatColor.RED + args[0] + ChatColor.GREEN + "!");
+                player.sendMessage(ChatColor.GREEN + target.getName() + " now has the skin of " + ChatColor.RED + args[0] + ChatColor.GREEN + "!");
+                model.commandCoolDowns.put(player.getUniqueId(), System.currentTimeMillis() + model.commandCooldown);
+            } else {
+                sender.sendMessage(ChatColor.RED + "You don't have access to change someone else's skin");
+            }
         }
         return true;
     }
