@@ -40,12 +40,12 @@ public class StaffChatUtil {
     }
 
     public static void respondMessage(Player p, Player target, String message) {
-//        for (Player target1 : Bukkit.getOnlinePlayers()) {
-//            if (target1 == p || target1 == target) continue;
-//            if (target1.hasPermission("staffchat.mod") || target1.hasPermission("staffchat.admin") || target1.hasPermission("staffchat.owner")) {
-//                target1.sendMessage(getPlayerPrefix(p) + Chat.cPurple + " -> " + getPlayerPrefix(target) + Chat.cPurple + " " + message);
-//            }
-//        }
+        for (Player target1 : Bukkit.getOnlinePlayers()) {
+            if (target1 == p || target1 == target) continue;
+            if (target1.hasPermission("staffchat.mod") || target1.hasPermission("staffchat.admin") || target1.hasPermission("staffchat.owner")) {
+                target1.sendMessage(getPlayerPrefix(p) + Chat.cPurple + " -> " + getPlayerPrefix(target) + Chat.cPurple + " " + message);
+            }
+        }
         target.playSound(target.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 100, 2);
         target.sendMessage(Chat.cPurple + "<- " + getPlayerPrefix(p) + Chat.cPurple + " " + message);
         p.sendMessage(Chat.cPurple + "-> " + getPlayerPrefix(target) + Chat.cPurple + " " + message);
